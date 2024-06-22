@@ -2,7 +2,7 @@
 import pandas as pd
 
 # read by default 1st sheet of an excel file
-df= pd.read_excel('datatest.xlsx',header=0,sheet_name="Sheet1")
+df= pd.read_excel('datatest.xlsx',header=0,sheet_name="Style1")
 row_name=df.columns.values
 
 df.insert(2,'sewing',0,True)
@@ -39,8 +39,8 @@ def cal_wip(num_seq,time,list_point_check):
         df.loc[num_seq-1,'WIP']-=df.loc[num_seq,'wating']
         df.loc[num_seq,'wating']=0
         df.loc[num_seq,'sewing']=df.loc[num_seq,'headcount']
-tes=1       
-def sequence_firt(time_st,time_li,list_point_check):
+     
+def sequence_first(time_st,time_li,list_point_check):
     df.loc[0,'wating']=0
     df.loc[0,'sewing']=4
     cycle=time_li//df.loc[0,'SAM']
@@ -59,10 +59,10 @@ def sequence_firt(time_st,time_li,list_point_check):
 if __name__=="__main__":
     list_check=[]
     time_step=0
-    time_line=36
+    time_line=100
     for i in range(1,df.shape[0]):
         cal_wip(i,time_step,list_check)
-    sequence_firt(time_step,time_line,list_check)
+    sequence_first(time_step,time_line,list_check)
     # print(time_step)
     # print(df)
     # for _ in list_check:
@@ -73,7 +73,7 @@ if __name__=="__main__":
     # print(time_step)
     while time_step<= time_line:
         update_sequence(pcheck)
-        sequence_firt(time_step,time_line,list_check)
+        sequence_first(time_step,time_line,list_check)
         
         for i in range(1,df.shape[0]):
             cal_wip(i,time_step,list_check)
