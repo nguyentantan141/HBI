@@ -51,12 +51,12 @@ def sequence_firt(time,list_point_check):
 if __name__=="__main__":
     list_check=[]
     time_step=0
-    time_line=15
+    time_line=20
     for i in range(1,df.shape[0]):
         cal_wip(i,time_step,list_check)
     sequence_firt(time_step,list_check)
-    print(time_step)
-    print(df)
+    # print(time_step)
+    # print(df)
     # for _ in list_check:
     #     print(_)
     pcheck=list_check.pop(0)
