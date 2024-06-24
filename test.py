@@ -43,8 +43,8 @@ def cal_wip(num_seq,time,list_point_check):
 def sequence_first(time_st,time_li,list_point_check):
     df.loc[0,'wating']=0
     df.loc[0,'sewing']=4
-    cycle=time_li//df.loc[0,'SAM']
     if time_st==0:
+        cycle=time_li//df.loc[0,'SAM']
         for cyc in range(0,int(cycle)):
             cal_time_check(cyc*df.loc[0,'SAM'],1,4,list_point_check)
             # print(time)
